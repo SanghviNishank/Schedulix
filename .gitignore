@@ -1,9 +1,19 @@
+# Build folders
 out/
+bin/
 build/
 target/
+
+# Java compiled files
 *.class
 *.jar
+
+# Logs
 *.log
+
+# IDE
 .idea/
 .vscode/
-javafx-sdk/
+
+# JavaFX SDK (VERY IMPORTANT)
+javafx-sdk-17.0.18/
