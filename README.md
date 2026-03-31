@@ -96,11 +96,11 @@ It is a **Java + JavaFX desktop application** that takes your inputs — subject
 
 | 🏠 Dashboard / Home | 📋 Input Form |
 |:---:|:---:|
-| `[ Screenshot Coming Soon ]` | `[ Screenshot Coming Soon ]` |
+| `[ Screenshot (632).png]` | `[ Screenshot (633).png]` |
 
 | 🗓️ Daily Timetable Output | 📝 Exam Schedule Output |
 |:---:|:---:|
-| `[ Screenshot Coming Soon ]` | `[ Screenshot Coming Soon ]` |
+| `[ Screenshot (634).png]` | `[ Screenshot (635).png]` |
 
 ---
 
@@ -342,13 +342,7 @@ git push origin feature/your-feature-name
 # 6. Open a Pull Request on the main repo
 ```
 
-### Contribution Guidelines
-- Follow the existing MVC folder structure
-- Keep code clean, readable, and commented where necessary
-- For major changes, **open an issue first** to discuss your idea before building
-- Test your changes thoroughly before submitting a PR
 
----
 
 ### 💬 Want to Contribute but Not Sure Where to Start?
 
@@ -356,9 +350,7 @@ git push origin feature/your-feature-name
 
 I actively respond to everyone, whether you're a beginner making your first open-source contribution or an experienced developer with a feature idea. Don't hesitate.
 
-📸 **Instagram:** [@your_instagram](https://instagram.com/your_instagram) ← *fastest response*  
-💼 **LinkedIn:** [Your Name](https://linkedin.com/in/your-profile)  
-📧 **Email:** your.email@example.com
+📧 **Email:** nishanksanghvi4@gmail.com
 
 > Open source is better when people work together. Let's build something great. 🙌
 
@@ -372,20 +364,7 @@ See the [`LICENSE`](LICENSE) file for full terms.
 
 ---
 
-## 👨‍💻 Author & Contact
 
-<table>
-  <tr>
-    <td>
-      <b>Your Name</b><br/>
-      <sub>Developer & Designer — Schedulix</sub><br/><br/>
-      📧 &nbsp;<a href="mailto:your.email@example.com">your.email@example.com</a><br/>
-      💼 &nbsp;<a href="https://linkedin.com/in/your-profile">LinkedIn Profile</a><br/>
-      🐙 &nbsp;<a href="https://github.com/your-username">GitHub Profile</a><br/>
-      📸 &nbsp;<a href="https://instagram.com/your_instagram">Instagram — DM me anytime</a>
-    </td>
-  </tr>
-</table>
 
 > Have a bug to report, an idea to share, or just want to say hi?
 > **DM me on Instagram or LinkedIn — I respond to every message.**
