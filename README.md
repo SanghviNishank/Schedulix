@@ -96,11 +96,11 @@ It is a **Java + JavaFX desktop application** that takes your inputs — subject
 
 | 🏠 Dashboard / Home | 📋 Input Form |
 |:---:|:---:|
-| `[ Screenshot (632).png]` | `[ Screenshot (633).png]` |
+| `[ Screenshot(632).png]` | `[ Screenshot(633).png]` |
 
 | 🗓️ Daily Timetable Output | 📝 Exam Schedule Output |
 |:---:|:---:|
-| `[ Screenshot (634).png]` | `[ Screenshot (635).png]` |
+| `[ Screenshot(634).png]` | `[ Screenshot(635).png]` |
 
 ---
 
