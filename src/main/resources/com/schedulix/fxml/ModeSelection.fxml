@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.schedulix.controllers.ModeSelectionController"
+           styleClass="mode-root"
+           prefWidth="900" prefHeight="600">
+
+    <Pane styleClass="mode-bg"/>
+
+    <VBox alignment="CENTER" spacing="50" styleClass="mode-content">
+
+        <!-- Header -->
+        <VBox fx:id="headerBox" alignment="CENTER" spacing="8" opacity="0.0">
+            <HBox alignment="CENTER" spacing="10">
+                <StackPane styleClass="header-logo-icon">
+                    <Label text="S" styleClass="header-logo-letter"/>
+                </StackPane>
+                <Label text="SCHEDULIX" styleClass="mode-app-title"/>
+            </HBox>
+            <Label text="Choose your scheduling mode to get started" styleClass="mode-subtitle"/>
+        </VBox>
+
+        <!-- Mode Cards — HBox so cardsBox maps to HBox in controller -->
+        <HBox fx:id="cardsBox" alignment="CENTER" spacing="40" opacity="0.0">
+
+            <!-- Regular Timetable Card -->
+            <VBox fx:id="regularCard" styleClass="mode-card" spacing="20" alignment="CENTER"
+                  prefWidth="300" prefHeight="280"
+                  onMouseClicked="#onRegularSelected"
+                  onMouseEntered="#onCardHoverEnter"
+                  onMouseExited="#onCardHoverExit">
+                <StackPane styleClass="card-icon-wrapper card-icon-blue">
+                    <Label text="📅" styleClass="card-icon"/>
+                </StackPane>
+                <VBox alignment="CENTER" spacing="8">
+                    <Label text="Regular Timetable" styleClass="card-title"/>
+                    <Label text="Daily Scheduling" styleClass="card-badge card-badge-blue"/>
+                </VBox>
+                <Label text="Generate weekly class schedules with period-based time slots. Manage faculty, subjects, and prevent conflicts automatically."
+                       styleClass="card-description" wrapText="true" textAlignment="CENTER" maxWidth="240"/>
+                <Button text="Select This Mode →" styleClass="card-btn card-btn-blue"
+                        onAction="#onRegularSelected"/>
+            </VBox>
+
+            <!-- OR divider -->
+            <VBox alignment="CENTER">
+                <Label text="OR" styleClass="or-label"/>
+            </VBox>
+
+            <!-- Exam Timetable Card -->
+            <VBox fx:id="examCard" styleClass="mode-card" spacing="20" alignment="CENTER"
+                  prefWidth="300" prefHeight="280"
+                  onMouseClicked="#onExamSelected"
+                  onMouseEntered="#onCardHoverEnter"
+                  onMouseExited="#onCardHoverExit">
+                <StackPane styleClass="card-icon-wrapper card-icon-green">
+                    <Label text="📝" styleClass="card-icon"/>
+                </StackPane>
+                <VBox alignment="CENTER" spacing="8">
+                    <Label text="Exam Timetable" styleClass="card-title"/>
+                    <Label text="Date &amp; Slot Based" styleClass="card-badge card-badge-green"/>
+                </VBox>
+                <Label text="Schedule examinations by date with specific time slots. Assign invigilators, manage seating, and avoid faculty repetition."
+                       styleClass="card-description" wrapText="true" textAlignment="CENTER" maxWidth="240"/>
+                <Button text="Select This Mode →" styleClass="card-btn card-btn-green"
+                        onAction="#onExamSelected"/>
+            </VBox>
+
+        </HBox>
+
+        <!-- Footer hint -->
+        <Label fx:id="hintLabel"
+               text="Both modes support conflict detection, algorithm visualization, and export features"
+               styleClass="mode-hint" opacity="0.0"/>
+
+    </VBox>
+
+</StackPane>

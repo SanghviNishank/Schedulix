@@ -1,0 +1,98 @@
+/* ═══════════════════════════════════════════════
+   Schedulix – Splash Screen Stylesheet
+   ═══════════════════════════════════════════════ */
+
+.splash-root {
+    -fx-background-color: transparent;
+}
+
+.splash-bg-layer1 {
+    -fx-background-color: linear-gradient(to bottom right, #0d1b2a, #1b2d4f);
+    -fx-min-width: 700;
+    -fx-min-height: 450;
+}
+
+.splash-bg-layer2 {
+    -fx-background-color: radial-gradient(center 30% 30%, radius 60%, #1a3a6e44, transparent);
+}
+
+.splash-bg-layer3 {
+    -fx-background-color: radial-gradient(center 75% 75%, radius 50%, #0a2a5c33, transparent);
+}
+
+/* Decorative circles */
+.deco-circle-1 { -fx-fill: #1d4e8920; -fx-stroke: #4dabf730; -fx-stroke-width: 1; }
+.deco-circle-2 { -fx-fill: #1a4f3a20; -fx-stroke: #51cf6630; -fx-stroke-width: 1; }
+.deco-circle-3 { -fx-fill: #2d1a5520; -fx-stroke: #cc5de830; -fx-stroke-width: 1; }
+.deco-circle-4 { -fx-fill: #1d2a5520; -fx-stroke: #4dabf720; -fx-stroke-width: 1; }
+
+.splash-content { -fx-padding: 0; }
+
+/* Logo */
+.logo-box {
+    -fx-padding: 10 0 0 0;
+}
+
+.logo-icon {
+    -fx-background-color: linear-gradient(to bottom right, #4dabf7, #228be6);
+    -fx-background-radius: 16;
+    -fx-min-width: 58;
+    -fx-min-height: 58;
+    -fx-max-width: 58;
+    -fx-max-height: 58;
+    -fx-effect: dropshadow(gaussian, #4dabf760, 18, 0.3, 0, 4);
+}
+
+.logo-letter {
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Georgia";
+}
+
+.app-name {
+    -fx-text-fill: white;
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 6px;
+    -fx-font-family: "Georgia";
+}
+
+/* Divider */
+.divider-line {
+    -fx-fill: linear-gradient(to right, transparent, #4dabf7, transparent);
+    -fx-arc-width: 2;
+    -fx-arc-height: 2;
+}
+
+/* Tagline */
+.tagline {
+    -fx-text-fill: #adb5bd;
+    -fx-font-size: 13.5px;
+    -fx-font-family: "Segoe UI", "System";
+    -fx-letter-spacing: 0.5px;
+}
+
+/* Loading */
+.loading-text {
+    -fx-text-fill: #74c0fc;
+    -fx-font-size: 12px;
+    -fx-font-family: "Consolas", "Monospace";
+}
+
+.splash-progress {
+    -fx-accent: #4dabf7;
+    -fx-background-color: #1d3557;
+    -fx-background-radius: 2;
+}
+
+.splash-progress .bar {
+    -fx-background-color: linear-gradient(to right, #4dabf7, #74c0fc);
+    -fx-background-radius: 2;
+    -fx-background-insets: 0;
+}
+
+.splash-progress .track {
+    -fx-background-color: #1d3557;
+    -fx-background-radius: 2;
+}

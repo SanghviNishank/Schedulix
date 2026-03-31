@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.schedulix.controllers.SplashController"
+           styleClass="splash-root"
+           prefWidth="700" prefHeight="450">
+
+    <Pane styleClass="splash-bg-layer1"/>
+    <Pane styleClass="splash-bg-layer2"/>
+
+    <Pane styleClass="splash-decoration">
+        <Circle fx:id="circle1" centerX="80"  centerY="80"  radius="120" styleClass="deco-circle-1"/>
+        <Circle fx:id="circle2" centerX="620" centerY="370" radius="90"  styleClass="deco-circle-2"/>
+        <Circle fx:id="circle3" centerX="650" centerY="100" radius="60"  styleClass="deco-circle-3"/>
+        <Circle fx:id="circle4" centerX="50"  centerY="400" radius="50"  styleClass="deco-circle-4"/>
+    </Pane>
+
+    <VBox alignment="CENTER" spacing="18" styleClass="splash-content">
+
+        <HBox fx:id="logoBox" alignment="CENTER" spacing="14" styleClass="logo-box" opacity="0.0">
+            <StackPane styleClass="logo-icon">
+                <Label text="S" styleClass="logo-letter"/>
+            </StackPane>
+            <Label text="SCHEDULIX" styleClass="app-name"/>
+        </HBox>
+
+        <Rectangle fx:id="dividerLine" width="0" height="2" styleClass="divider-line"/>
+
+        <Label fx:id="taglineLabel"
+               text="Smart Timetable &amp; Exam Scheduler with Visual Algorithm Intelligence"
+               styleClass="tagline"
+               wrapText="true"
+               textAlignment="CENTER"
+               maxWidth="500"
+               opacity="0.0"/>
+
+        <VBox fx:id="loadingBox" alignment="CENTER" spacing="12" opacity="0.0">
+            <ProgressBar fx:id="progressBar" prefWidth="300" prefHeight="4"
+                         styleClass="splash-progress" progress="0.0"/>
+            <Label fx:id="loadingLabel" text="Initializing Scheduling Engine…" styleClass="loading-text"/>
+        </VBox>
+
+    </VBox>
+
+</StackPane>

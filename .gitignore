@@ -1,0 +1,9 @@
+out/
+build/
+target/
+*.class
+*.jar
+*.log
+.idea/
+.vscode/
+javafx-sdk/

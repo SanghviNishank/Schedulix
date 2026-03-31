@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.canvas.Canvas?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.schedulix.controllers.MainDashboardController"
+            styleClass="dashboard-root"
+            prefWidth="1400" prefHeight="860">
+
+    <!-- ══════════════════════════════════════════════════════
+         TOP ACTION BAR
+         ══════════════════════════════════════════════════════ -->
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="0">
+
+            <!-- Brand / Logo -->
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="top-brand">
+                <StackPane styleClass="top-logo-icon">
+                    <Label text="S" styleClass="top-logo-letter"/>
+                </StackPane>
+                <VBox spacing="0">
+                    <Label text="Schedulix" styleClass="top-app-name"/>
+                    <Label fx:id="modeLabel" text="Regular Timetable Mode" styleClass="top-mode-label"/>
+                </VBox>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <!-- Action Buttons -->
+            <HBox spacing="10" alignment="CENTER" styleClass="top-actions">
+                <Button fx:id="btnGenerate"  text="⚡ Generate Timetable"
+                        styleClass="btn-generate"   onAction="#onGenerateTimetable"/>
+                <Button text="📄 Export PDF"
+                        styleClass="btn-secondary"  onAction="#onExportPDF"/>
+                <Button text="📊 Export Excel"
+                        styleClass="btn-secondary"  onAction="#onExportExcel"/>
+                <Button fx:id="btnAlgorithm" text="▶ View Animation"
+                        styleClass="btn-animation"  onAction="#onViewAnimation"/>
+                <Button text="← Back"
+                        styleClass="btn-back"       onAction="#onBack"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- ══════════════════════════════════════════════════════
+         LEFT SIDEBAR — ALL INPUTS
+         ══════════════════════════════════════════════════════ -->
+    <left>
+        <ScrollPane styleClass="sidebar-scroll" fitToWidth="true"
+                    prefWidth="244" hbarPolicy="NEVER">
+            <VBox styleClass="sidebar" spacing="0" prefWidth="234">
+
+                <!-- ── Periods / Slots ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <Label text="Periods / Exam Slots" styleClass="sidebar-label"/>
+                    <Spinner fx:id="periodsSpinner" prefWidth="190"
+                             styleClass="sidebar-spinner"/>
+                </VBox>
+
+                <Separator styleClass="sidebar-sep"/>
+
+                <!-- ── Classes ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Classes" styleClass="sidebar-label" HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add" styleClass="btn-add-sm" onAction="#onAddClass"/>
+                    </HBox>
+                    <TextField fx:id="classInput" promptText="e.g. Class 10-A"
+                               styleClass="sidebar-input"/>
+                    <ListView fx:id="classesList" prefHeight="88"
+                              styleClass="sidebar-list"/>
+                </VBox>
+
+                <Separator styleClass="sidebar-sep"/>
+
+                <!-- ── Faculty ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Faculty" styleClass="sidebar-label" HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add" styleClass="btn-add-sm" onAction="#onAddFaculty"/>
+                    </HBox>
+                    <TextField fx:id="facultyInput" promptText="Faculty name"
+                               styleClass="sidebar-input"/>
+                    <ListView fx:id="facultyList" prefHeight="88"
+                              styleClass="sidebar-list"/>
+                </VBox>
+
+                <Separator styleClass="sidebar-sep"/>
+
+                <!-- ── Subjects ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <HBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Subjects" styleClass="sidebar-label" HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add" styleClass="btn-add-sm" onAction="#onAddSubject"/>
+                    </HBox>
+                    <TextField fx:id="subjectInput" promptText="Subject name"
+                               styleClass="sidebar-input"/>
+                    <ListView fx:id="subjectList" prefHeight="78"
+                              styleClass="sidebar-list"/>
+                </VBox>
+
+                <Separator styleClass="sidebar-sep"/>
+
+                <!-- ── Priority Level ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <Label text="Priority Level" styleClass="sidebar-label"/>
+                    <HBox spacing="5">
+                        <ToggleButton fx:id="toggleHigh"   text="High"
+                                      styleClass="priority-btn priority-high"
+                                      onAction="#onPriorityToggle" selected="true"/>
+                        <ToggleButton fx:id="toggleMedium" text="Medium"
+                                      styleClass="priority-btn priority-medium"
+                                      onAction="#onPriorityToggle"/>
+                        <ToggleButton fx:id="toggleLow"    text="Low"
+                                      styleClass="priority-btn priority-low"
+                                      onAction="#onPriorityToggle"/>
+                    </HBox>
+                </VBox>
+
+                <Separator styleClass="sidebar-sep"/>
+
+                <!-- ── Faculty Free Days ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <Label text="Faculty Free Days" styleClass="sidebar-label"/>
+                    <VBox spacing="4" styleClass="free-periods-box">
+                        <CheckBox fx:id="cbMonday"    text="Monday"    styleClass="day-checkbox"/>
+                        <CheckBox fx:id="cbTuesday"   text="Tuesday"   styleClass="day-checkbox"/>
+                        <CheckBox fx:id="cbWednesday" text="Wednesday" styleClass="day-checkbox"/>
+                        <CheckBox fx:id="cbThursday"  text="Thursday"  styleClass="day-checkbox"/>
+                        <CheckBox fx:id="cbFriday"    text="Friday"    styleClass="day-checkbox"/>
+                    </VBox>
+                </VBox>
+
+                <Separator styleClass="sidebar-sep"/>
+
+                <!-- ── Absent Faculty (BOTH modes — FIXED: moved outside examModeSection) ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <Label text="Absent Faculty Today" styleClass="sidebar-label"/>
+                    <TextField fx:id="facultyLeaveInput"
+                               promptText="e.g. Prof. Raman, Prof. Saman"
+                               styleClass="sidebar-input"/>
+                    <Label text="Comma-separated. Auto-substitution will apply."
+                           styleClass="sidebar-hint"/>
+                </VBox>
+
+                <Separator styleClass="sidebar-sep"/>
+
+                <!-- ── Exam Mode Config (only shown in EXAM mode) ── -->
+                <VBox fx:id="examModeSection" styleClass="sidebar-section" spacing="8"
+                      visible="false" managed="false">
+                    <Label text="Exam Configuration" styleClass="sidebar-label"/>
+                    <DatePicker fx:id="examDatePicker"
+                                styleClass="sidebar-date-picker"
+                                promptText="Start Date"/>
+                    <ComboBox fx:id="timeSlotCombo"
+                              promptText="Select Time Slot"
+                              styleClass="sidebar-combo" prefWidth="190"/>
+                </VBox>
+
+                <!-- ── Bottom Action Buttons ── -->
+                <VBox styleClass="sidebar-section" spacing="8">
+                    <Button text="⚡ Generate Timetable" styleClass="btn-generate-full"
+                            maxWidth="Infinity" onAction="#onGenerateTimetable"/>
+                    <Button text="🗑 Clear All Inputs"   styleClass="btn-clear-full"
+                            maxWidth="Infinity" onAction="#onClearInputs"/>
+                </VBox>
+
+                <!-- ── Colour Legend ── -->
+                <VBox styleClass="sidebar-section legend-section" spacing="6">
+                    <Label text="Cell Colour Key" styleClass="sidebar-label"/>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane styleClass="legend-dot legend-green"/>
+                        <Label text="No conflict" styleClass="legend-text"/>
+                    </HBox>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane styleClass="legend-dot legend-red"/>
+                        <Label text="Conflict" styleClass="legend-text"/>
+                    </HBox>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane styleClass="legend-dot legend-blue"/>
+                        <Label text="Priority" styleClass="legend-text"/>
+                    </HBox>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane styleClass="legend-dot legend-yellow"/>
+                        <Label text="Substituted" styleClass="legend-text"/>
+                    </HBox>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </left>
+
+    <!-- ══════════════════════════════════════════════════════
+         CENTER PANEL — TIMETABLE + SUMMARY
+         ══════════════════════════════════════════════════════ -->
+    <center>
+        <VBox styleClass="center-panel" spacing="0">
+
+            <!-- Center Header -->
+            <HBox styleClass="center-header" alignment="CENTER_LEFT" spacing="12">
+                <Label text="Timetable View" styleClass="center-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="viewModeCombo" styleClass="view-combo"/>
+            </HBox>
+
+            <!-- Timetable Table (default view) -->
+            <ScrollPane fx:id="timetableScroll" styleClass="timetable-scroll"
+                        fitToWidth="true" VBox.vgrow="ALWAYS">
+                <TableView fx:id="timetableTable" styleClass="timetable-table"
+                           VBox.vgrow="ALWAYS" editable="true"/>
+            </ScrollPane>
+
+            <!-- Seating Layout (switched view) -->
+            <StackPane fx:id="seatingPane" visible="false" managed="false"
+                       VBox.vgrow="ALWAYS" styleClass="seating-pane">
+                <Canvas fx:id="seatingCanvas" width="700" height="500"/>
+            </StackPane>
+
+            <!-- ── Summary Dashboard Bar ── -->
+            <HBox styleClass="summary-bar" alignment="CENTER" spacing="0">
+
+                <VBox styleClass="summary-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <Label fx:id="totalExamsLabel" text="0" styleClass="summary-number"/>
+                    <Label text="Total Cells" styleClass="summary-desc"/>
+                </VBox>
+                <Separator orientation="VERTICAL" styleClass="summary-sep"/>
+
+                <VBox styleClass="summary-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <Label fx:id="conflictsLabel" text="0"
+                           styleClass="summary-number summary-red"/>
+                    <Label text="Conflicts" styleClass="summary-desc"/>
+                </VBox>
+                <Separator orientation="VERTICAL" styleClass="summary-sep"/>
+
+                <VBox styleClass="summary-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <Label fx:id="resolvedLabel" text="0"
+                           styleClass="summary-number summary-green"/>
+                    <Label text="Substitutions" styleClass="summary-desc"/>
+                </VBox>
+                <Separator orientation="VERTICAL" styleClass="summary-sep"/>
+
+                <VBox styleClass="summary-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <Label fx:id="freeSlotsLabel" text="0"
+                           styleClass="summary-number summary-blue"/>
+                    <Label text="Free Slots" styleClass="summary-desc"/>
+                </VBox>
+                <Separator orientation="VERTICAL" styleClass="summary-sep"/>
+
+                <VBox styleClass="summary-card" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <Label fx:id="priorityCountLabel" text="0"
+                           styleClass="summary-number summary-orange"/>
+                    <Label text="Priority" styleClass="summary-desc"/>
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+    </center>
+
+    <!-- ══════════════════════════════════════════════════════
+         RIGHT PANEL — ALGORITHM VISUALIZATION
+         ══════════════════════════════════════════════════════ -->
+    <right>
+        <VBox styleClass="algo-panel" spacing="0" prefWidth="282">
+
+            <Label text="Algorithm Visualization" styleClass="algo-panel-title"/>
+
+            <!-- Graph Canvas -->
+            <StackPane styleClass="graph-container" VBox.vgrow="ALWAYS">
+                <Canvas fx:id="graphCanvas" width="262" height="240"/>
+            </StackPane>
+
+            <!-- Step description -->
+            <Label fx:id="stepLabel"
+                   text="Generate a timetable to build the conflict graph."
+                   styleClass="algo-step-label" wrapText="true"/>
+
+            <!-- Step counter -->
+            <HBox styleClass="step-counter-box" alignment="CENTER_LEFT" spacing="8">
+                <Label text="Step" styleClass="step-text"/>
+                <Label fx:id="stepCounterLabel" text="0" styleClass="step-number"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="stepTotalLabel" text="/ 0" styleClass="step-total"/>
+            </HBox>
+
+            <!-- Progress bar -->
+            <ProgressBar fx:id="algoProgressBar" prefWidth="Infinity" prefHeight="4"
+                         styleClass="algo-progress" progress="0.0"/>
+
+            <!-- Playback Controls -->
+            <HBox styleClass="algo-controls" spacing="6" alignment="CENTER">
+                <Button fx:id="btnPlay"  text="▶ Play"
+                        styleClass="algo-btn algo-btn-primary" onAction="#onAlgoPlay"/>
+                <Button fx:id="btnPause" text="⏸ Pause"
+                        styleClass="algo-btn" onAction="#onAlgoPause" disable="true"/>
+                <Button fx:id="btnStep"  text="⏭ Step"
+                        styleClass="algo-btn" onAction="#onAlgoStep"/>
+                <Button text="↺ Reset"
+                        styleClass="algo-btn" onAction="#onAlgoReset"/>
+            </HBox>
+
+            <Separator styleClass="algo-sep"/>
+
+            <!-- Seating Preview -->
+            <VBox styleClass="algo-optional-section" spacing="8">
+                <HBox alignment="CENTER_LEFT" spacing="6">
+                    <Label text="Seating Preview" styleClass="algo-optional-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label text="Optional" styleClass="optional-tag"/>
+                </HBox>
+                <Canvas fx:id="miniSeatingCanvas" width="242" height="110"/>
+                <Button text="Generate Seating Plan" styleClass="btn-seating"
+                        maxWidth="Infinity" onAction="#onGenerateSeating"/>
+            </VBox>
+
+        </VBox>
+    </right>
+
+</BorderPane>
