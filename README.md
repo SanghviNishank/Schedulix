@@ -94,13 +94,13 @@ It is a **Java + JavaFX desktop application** that takes your inputs — subject
 
 > UI screenshots will be added with the first stable release. Stay tuned!
 
-| 🏠 Dashboard / Home | 📋 Input Form |
+| 🏠 Dashboard / Home | 📋 choice screen |
 |:---:|:---:|
-| `[ Screenshot(632).png]` | `[ Screenshot(633).png]` |
+| ![Dashboard](Screenshot%20(632).png) | ![choice screen](Screenshot%20(633).png) |
 
 | 🗓️ Daily Timetable Output | 📝 Exam Schedule Output |
 |:---:|:---:|
-| `[ Screenshot(634).png]` | `[ Screenshot(635).png]` |
+| ![Daily Timetable](Screenshot%20(634).png) | ![Exam Schedule](Screenshot%20(635).png) |
 
 ---
 
